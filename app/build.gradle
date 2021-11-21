@@ -1,8 +1,23 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+/** Load key store config. */
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
-    compileSdk 31
+    compileSdk 30
+    buildToolsVersion "30.0.3"
+
+    signingConfigs {
+        config {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword (keystoreProperties['storePassword'])
+            keyAlias (keystoreProperties['keyAlias'])
+            keyPassword (keystoreProperties['keyPassword'])
+        }
+    }
 
     defaultConfig {
         applicationId "com.numad21fa.vital"
@@ -10,8 +25,9 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
     }
 
     buildTypes {
@@ -19,10 +35,32 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        applicationVariants.all{
+            variant ->
+                variant.outputs.each{
+                    output->
+                        project.ext { appName = 'Vital' }
+                        def formattedDate = new Date().format('yyyy-MM-dd-HH-mm-ss')
+                        def newName = output.outputFile.name
+                        newName = newName.replace("app-", "$project.ext.appName-")
+                        newName = newName.replace("-debug", "-debug-" + formattedDate)
+                        output.outputFileName  = newName
+                }
+        }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+            res {
+                srcDirs 'src\\main\\res'
+            }
+        }
     }
 }
 
