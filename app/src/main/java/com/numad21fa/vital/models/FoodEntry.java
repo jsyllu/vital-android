@@ -18,4 +18,32 @@ public class FoodEntry {
     this.portion = portion;
     this.createdAt = new Date();
   }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public String getFdcId() {
+    return fdcId;
+  }
+
+  public void setFdcId(String fdcId) {
+    this.fdcId = fdcId;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public Integer getPortion() {
+    return portion;
+  }
+
+  public void setPortion(Integer portion) {
+    this.portion = portion;
+  }
 }

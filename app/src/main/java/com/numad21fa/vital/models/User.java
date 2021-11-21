@@ -103,8 +103,4 @@ public class User {
     // iterate dailyIntakeList for 7 days and sum nutrients amount in to nutrient7Days
     return nutrient7Days;
   }
-
-  public void setNutrient7Days(Map<String, Double> nutrient7Days) {
-    this.nutrient7Days = nutrient7Days;
-  }
 }
