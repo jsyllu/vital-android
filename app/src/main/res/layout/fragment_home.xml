@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".HomeFragment">
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <TextView
+    android:id="@+id/header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/header_hi_user"
+    android:textFontWeight="500"
+    android:textSize="26sp" />
+
+  <TextView
+    android:id="@+id/header_description"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="@string/header_hi_user_description"
+    android:textFontWeight="500"
+    android:textSize="20sp" />
+
+  <EditText
+    android:id="@+id/editSearch"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:padding="10dp"
+    android:background="@drawable/input_style"
+    android:drawablePadding="15dp"
+    android:textColor="@color/primary"
+    android:inputType="textShortMessage"
+    android:drawableStart="@drawable/ic_search_style"
+    android:hint="@string/searchPlaceholder"
+    android:autofillHints="@string/searchPlaceholder" />
+  </LinearLayout>
+
+</FrameLayout>
