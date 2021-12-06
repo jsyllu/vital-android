@@ -69,7 +69,7 @@ public class ProfileFragment extends Fragment implements OnClickListener {
   public void login(View view) {
     // TODO: complete authentication logic
     // open login screen
-    Intent intent = new Intent(getActivity(), LoginActivity.class);
+    Intent intent = new Intent(getActivity(), RegisterActivity.class);
     startActivity(intent);
   }
 

@@ -11,6 +11,23 @@
   app:layout_constraintCircleRadius="15dp"
   tools:context=".LoginActivity">
 
+  <Button
+      android:id="@+id/btn_toRegPage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/default_outlined_button_style"
+      android:paddingStart="15dp"
+      android:paddingEnd="15dp"
+      android:text="Register"
+
+      android:textColor="@color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/registerPassward"
+      app:layout_constraintVertical_bias="0.577" />
+
   <TextView
     android:id="@+id/brand"
     android:layout_width="wrap_content"
@@ -33,7 +50,7 @@
     app:layout_constraintTop_toBottomOf="@+id/brand" />
 
   <EditText
-    android:id="@+id/editEmail"
+    android:id="@+id/regiterEmail"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_marginTop="30dp"
@@ -49,7 +66,7 @@
     app:layout_constraintTop_toBottomOf="@id/header" />
 
   <EditText
-    android:id="@+id/editPassword"
+    android:id="@+id/registerPassward"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_marginTop="24dp"
@@ -63,21 +80,23 @@
     android:textSize="18sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/editEmail" />
+    app:layout_constraintTop_toBottomOf="@id/regiterEmail" />
 
   <Button
-    android:id="@+id/btn_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/header_login"
-    android:paddingStart="15dp"
-    android:paddingEnd="15dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/editPassword"
-    android:background="@drawable/default_outlined_button_style"
-    android:textColor="@color/white"/>
+      android:id="@+id/btn_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/default_outlined_button_style"
+      android:paddingStart="15dp"
+      android:paddingEnd="15dp"
+      android:text="@string/header_login"
+      android:textColor="@color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.501"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/registerPassward"
+      app:layout_constraintVertical_bias="0.371" />
 
   <Button
     android:id="@+id/btn_exit"

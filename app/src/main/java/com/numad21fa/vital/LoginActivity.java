@@ -11,6 +11,8 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
     Button btn_exit = findViewById(R.id.btn_exit);
+    Button btn_toRegisterPage = findViewById(R.id.btn_toRegPage);
+    //btn_toRegisterPage.setOnClickListener();
     btn_exit.setOnClickListener(v -> finish());
   }
 }
