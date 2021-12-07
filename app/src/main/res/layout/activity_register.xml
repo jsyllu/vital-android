@@ -4,12 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="25dp"
-    android:layout_marginBottom="25dp"
     android:layout_marginStart="25dp"
+    android:layout_marginTop="25dp"
     android:layout_marginEnd="25dp"
+    android:layout_marginBottom="25dp"
     app:layout_constraintCircleRadius="15dp"
     tools:context=".RegisterActivity">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:autofillHints="Enter your username"
+        android:background="@drawable/input_style"
+        android:ems="10"
+        android:hint="Enter your username"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/regiterEmail"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_register"
@@ -23,10 +37,10 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerPassward"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.385" />
 
     <TextView
         android:id="@+id/brand"
@@ -53,48 +67,51 @@
         android:id="@+id/regiterEmail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
+        android:layout_marginTop="24dp"
         android:autofillHints="@string/EmailPlaceholder"
         android:background="@drawable/input_style"
         android:ems="10"
         android:hint="@string/EmailPlaceholder"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
     <EditText
         android:id="@+id/registerPassward"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
+        android:layout_marginTop="48dp"
         android:autofillHints="@string/passwordPlaceholder"
         android:background="@drawable/input_style"
         android:ems="10"
         android:hint="@string/passwordPlaceholder"
         android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/regiterEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/btn_exit"
+        android:id="@+id/btn_toLoginPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@color/white"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:text="Exit"
+        android:text="Already have account?
+        Login here"
         android:textColor="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_register"
+        app:layout_constraintVertical_bias="0.354" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

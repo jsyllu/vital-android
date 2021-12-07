@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * A simple {@link Fragment} subclass. Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -69,8 +71,12 @@ public class ProfileFragment extends Fragment implements OnClickListener {
   public void login(View view) {
     // TODO: complete authentication logic
     // open login screen
-    Intent intent = new Intent(getActivity(), RegisterActivity.class);
+    Intent intent = new Intent(getActivity(), LoginActivity.class);
     startActivity(intent);
+  }
+
+  public void logout(View view) {
+    FirebaseAuth.getInstance().signOut();
   }
 
   @Override
@@ -78,6 +84,11 @@ public class ProfileFragment extends Fragment implements OnClickListener {
     switch (view.getId()) {
       case R.id.btn_login:
         login(this.getView());
+        break;
+
+      case R.id.btn_logout:
+        logout(view);
+        login(view);
         break;
     }
   }

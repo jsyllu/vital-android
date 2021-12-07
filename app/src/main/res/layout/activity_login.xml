@@ -19,7 +19,7 @@
       android:paddingStart="15dp"
       android:paddingEnd="15dp"
       android:text="Register"
-
+      android:onClick="onClick"
       android:textColor="@color/white"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"

@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
     EditText userEmail, userPassword;
     Button registerBtn;
+    Button toLoginBtn;
     FirebaseAuth fAuth;
 
     @Override
@@ -29,13 +30,14 @@ public class RegisterActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.regiterEmail);
         userPassword = findViewById(R.id.registerPassward);
         registerBtn = findViewById(R.id.btn_register);
+        toLoginBtn = findViewById(R.id.btn_toLoginPage);
         fAuth = FirebaseAuth.getInstance();
 
         // if user already logged in, return to main activity
-        if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }
+//        if (fAuth.getCurrentUser() != null) {
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//            finish();
+//        }
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        toLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                finishActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
             }
         });
 
