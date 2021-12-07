@@ -12,9 +12,7 @@ import android.widget.Toast;
 
 import com.numad21fa.vital.R;
 
-// https://developer.android.com/training/volley/simple
-// https://www.youtube.com/watch?v=8UgFclFBPcM
-
+// FDC WebService TEST Activity
 public class FDCWebServiceActivity extends AppCompatActivity {
     Button btn_getFDCID, btn_getNutrientsByFDCID;
     EditText editText_dataInput;
@@ -54,26 +52,6 @@ public class FDCWebServiceActivity extends AppCompatActivity {
                     }
                 });
                 break;
-
-//            case R.id.btn_getNutrientsByFDCID:
-//                weatherDataService.getWeatherByCityID(et_dataInput.getText().toString(), new WeatherDataService.ForecastByIDResponse() {
-//                    @Override
-//                    public void onError(String message) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(List<WeatherReportModel> weatherReportModels) {
-//                        // put entire list into listview view
-//
-//                        ArrayAdapter arrayAdapter = new ArrayAdapter(WebServiceWeatherAPIActivity.this, android.R.layout.simple_list_item_1, weatherReportModels);
-//                        lv_weatherReport.setAdapter(arrayAdapter);
-//                        et_dataInput.setText(entered_city_name);
-//                    }
-//                });
-////
-//                break;
-
         }
 
     }
