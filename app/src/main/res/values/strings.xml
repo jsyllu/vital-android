@@ -18,4 +18,7 @@
   <string name="EmailPlaceholder">jess@vital.com</string>
   <string name="passwordPlaceholder">Enter Password</string>
   <string name="searchPlaceholder">Search any food</string>
+  <string name="get_nutrients_by_fdcid">Get Nutrients By FDCID</string>
+  <string name="get_fdc_id">GET FDC ID</string>
+  <string name="food_entries">Food Entries</string>
 </resources>
