@@ -4,17 +4,35 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
   final String CURRENT_FRAGMENT_TAG = "CURRENT_FRAGMENT_TAG";
+  FirebaseUser user;
+  String uID;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    // get current user
+    user = FirebaseAuth.getInstance().getCurrentUser();
+    if (user == null) {
+      // not logged in
+    } else {
+      // logged in
+      uID = user.getUid();
+
+    }
+    Toast.makeText(this, "UID: " + uID, Toast.LENGTH_SHORT).show();
+    //UZ22EAAdVhWkxxC2OMIW1MuLXzj1
 
     //Initialize Bottom Navigation View.
     BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
