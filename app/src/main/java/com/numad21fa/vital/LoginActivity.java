@@ -36,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
   }
 
   public void toRegPage() {
-    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+    Intent intent = new Intent(this, TempActivity.class);
+    // Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
     startActivity(intent);
   }
 

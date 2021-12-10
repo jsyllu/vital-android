@@ -81,6 +81,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentShaky);
     }
 
+    public void openRegPage() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -89,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnShaky:
                 openShakyView();
+                break;
+            case R.id.buttonToReg:
+                openRegPage();
                 break;
         }
 
