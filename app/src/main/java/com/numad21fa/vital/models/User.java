@@ -24,6 +24,15 @@ public class User {
     this.nutrientUnitMap = new HashMap<>();
   }
 
+  public User(String email, String password) {
+    this.createdAt = new Date();
+    this.lastLogIn = this.createdAt;
+    this.dailyIntakeList = new ArrayList<>();
+    this.nutrientUnitMap = new HashMap<>();
+    this.email = email;
+    this.password = password;
+  }
+
   public User(String email, String password, String firstname, String lastname) {
     this.email = email;
     this.password = password;

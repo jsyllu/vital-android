@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
     setContentView(R.layout.activity_login);
     userEmail = findViewById(R.id.regiterEmail);
     userPassword = findViewById(R.id.registerPassward);
@@ -34,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     btn_exit.setOnClickListener(v -> finish());
   }
 
-  public void toRegPage(View view) {
-    Intent intent = new Intent(this, RegisterActivity.class);
+  public void toRegPage() {
+    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
     startActivity(intent);
   }
 
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
   public void onClick(View view) {
     switch (view.getId()) {
       case R.id.btn_toRegPage:
-        toRegPage(view);
+        toRegPage();
         break;
 
       case R.id.btn_logIn:

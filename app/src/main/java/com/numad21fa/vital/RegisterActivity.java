@@ -15,29 +15,45 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.numad21fa.vital.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText userEmail, userPassword;
     Button registerBtn;
     Button toLoginBtn;
+    String uID;
     FirebaseAuth fAuth;
+    FirebaseUser user;
+    FirebaseDatabase database;
+    DatabaseReference db_users;
+    //final String USER_TABLE = User.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        userEmail = findViewById(R.id.regiterEmail);
-        userPassword = findViewById(R.id.registerPassward);
+        // text
+        userEmail = findViewById(R.id.registerEmail);
+        userPassword = findViewById(R.id.registerPassword);
+        // button
         registerBtn = findViewById(R.id.btn_register);
         toLoginBtn = findViewById(R.id.btn_toLoginPage);
+        // firebase
         fAuth = FirebaseAuth.getInstance();
+        user = fAuth.getCurrentUser();
+        uID = user.getUid();
+        database = FirebaseDatabase.getInstance();
+        //db_users = database.getReference(USER_TABLE);
+
 
         // if user already logged in, return to main activity
-        if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }
+//        if (fAuth.getCurrentUser() != null) {
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//            finish();
+//        }
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            uID = user.getUid();
+                            storeUser(email, password, uID);
                             Toast.makeText(RegisterActivity.this, "Registration Created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
@@ -78,6 +96,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void storeUser(String email, String pwd, String uid) {
+        User newUser = new User(email, pwd);
+        db_users.child(uid).setValue(newUser);
 
     }
 }
