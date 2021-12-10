@@ -83,7 +83,7 @@
     app:layout_constraintTop_toBottomOf="@id/regiterEmail" />
 
   <Button
-      android:id="@+id/btn_login"
+      android:id="@+id/btn_logIn"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:background="@drawable/default_outlined_button_style"
@@ -91,6 +91,7 @@
       android:paddingEnd="15dp"
       android:text="@string/header_login"
       android:textColor="@color/white"
+      android:onClick="onClick"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.501"
@@ -108,7 +109,7 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btn_login"
+    app:layout_constraintTop_toBottomOf="@+id/btn_logIn"
     android:backgroundTint="@color/white"
     android:textColor="@color/primary"/>
 
