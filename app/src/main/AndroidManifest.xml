@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vital">
         <activity
+            android:name=".webservice.RviewAdapter"
+            android:exported="true" />
+        <activity
+            android:name=".webservice.RviewHolder"
+            android:exported="true" />
+        <activity
+            android:name=".webservice.ItemCard"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
