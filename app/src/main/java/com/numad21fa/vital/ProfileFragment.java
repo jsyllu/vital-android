@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -64,20 +65,25 @@ public class ProfileFragment extends Fragment implements OnClickListener {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_profile, container, false);;
     Button btn_login = view.findViewById(R.id.btn_login);
+    Button btn_logout = view.findViewById(R.id.btn_logout);
     btn_login.setOnClickListener(this);
+    btn_logout.setOnClickListener(this);
 
     return view;
   }
 
   public void login(View view) {
     // TODO: complete authentication logic
+    // authentication logic is implemented in LoginActivity
     // open login screen
     Intent intent = new Intent(getActivity(), LoginActivity.class);
     startActivity(intent);
   }
 
-  public void logout() {
+  public void logout(View view) {
     FirebaseAuth.getInstance().signOut();
+    Toast.makeText(getContext(), "Successfully logged out", Toast.LENGTH_SHORT).show();
+
   }
 
   @Override
@@ -88,8 +94,7 @@ public class ProfileFragment extends Fragment implements OnClickListener {
         break;
 
       case R.id.btn_logout:
-        logout();
-        //login(view);
+        logout(this.getView());
         break;
     }
   }

@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     switch (view.getId()) {
       case R.id.btn_toRegPage:
         toRegPage();
+        finish();
         break;
 
       case R.id.btn_logIn:
