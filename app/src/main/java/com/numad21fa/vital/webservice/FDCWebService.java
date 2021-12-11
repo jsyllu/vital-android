@@ -31,6 +31,7 @@ public class FDCWebService {
     Context context;
     String fdcID;
 
+
     // Constructor
     public FDCWebService(Context context) {
         API_Key = "&api_key=zelNdbGKFObd921h7Za0hXvKE2HHK9GDPHhb6a4V";
@@ -60,6 +61,9 @@ public class FDCWebService {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    // Each search will create a new foods list
+                    foods = new ArrayList<FDCFood>();
+
                     Log.i("WebServiceResponse-totalHits", response.get("totalHits").toString());
 
                     // Parse the JSONArray from response
@@ -121,6 +125,10 @@ public class FDCWebService {
         // Call Request Queue, if null then initiate it in MySingleton
         MySingleton.getInstance(context).addToRequestQueue(request);
 
+    }
+
+    public List<FDCFood> getFoods() {
+        return foods;
     }
 }
 
