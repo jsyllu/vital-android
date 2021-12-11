@@ -65,27 +65,8 @@ public class HomeFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_home, container, false);
-    btn_logout = view.findViewById(R.id.testLogout);
-    btn_logout.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        switch (view.getId()) {
-          case R.id.btn_logout:
-            FirebaseAuth.getInstance().signOut();
-            break;
-
-          case R.id.buttonToReg:
-            toRegPage();
-            break;
-        }
-        //Toast.makeText(this, "UID: " + FirebaseAuth.getInstance().getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
-      }
-    });
     return view;
   }
 
-  public void toRegPage() {
-    Intent intent = new Intent(getActivity(), RegisterActivity.class);
-    startActivity(intent);
-  }
+
 }

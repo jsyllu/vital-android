@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.numad21fa.vital.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText userEmail, userPassword;
+    EditText userEmail, userPassword, username;
     Button registerBtn;
     Button toLoginBtn;
     String uID;
@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseDatabase database;
     DatabaseReference db_users;
-    //final String USER_TABLE = User.class.getSimpleName();
+    final String USER_TABLE = User.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,14 @@ public class RegisterActivity extends AppCompatActivity {
         // text
         userEmail = findViewById(R.id.registerEmail);
         userPassword = findViewById(R.id.registerPassword);
+        username = findViewById(R.id.username);
         // button
         registerBtn = findViewById(R.id.btn_register);
         toLoginBtn = findViewById(R.id.btn_toLoginPage);
         // firebase
         fAuth = FirebaseAuth.getInstance();
-        user = fAuth.getCurrentUser();
-        uID = user.getUid();
         database = FirebaseDatabase.getInstance();
-        //db_users = database.getReference(USER_TABLE);
+        db_users = database.getReference(USER_TABLE);
 
 
         // if user already logged in, return to main activity
@@ -60,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = userEmail.getText().toString().trim();
                 String password = userPassword.getText().toString().trim();
-
+                String userName = username.getText().toString().trim();
                 if (TextUtils.isEmpty(email)) {
                     userEmail.setError("Email cannot be empty!");
                     return;
@@ -75,9 +74,11 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            uID = user.getUid();
-                            storeUser(email, password, uID);
-                            Toast.makeText(RegisterActivity.this, "Registration Created", Toast.LENGTH_SHORT).show();
+                            FirebaseUser firebaseUser = fAuth.getCurrentUser();
+                            User user = new User(email, userName, password);
+                            uID = firebaseUser.getUid();
+                            db_users.child(uID).setValue(user);
+                            Toast.makeText(RegisterActivity.this, "Registration Created" + uID, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
                             Toast.makeText(RegisterActivity.this, "ERROR: " + task.getException() , Toast.LENGTH_SHORT).show();
@@ -91,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
         toLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                finishActivity(new Intent(getApplicationContext(), LoginActivity.class));
+               // startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 //finish();
             }
         });
@@ -99,9 +100,4 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void storeUser(String email, String pwd, String uid) {
-        User newUser = new User(email, pwd);
-        db_users.child(uid).setValue(newUser);
-
-    }
 }

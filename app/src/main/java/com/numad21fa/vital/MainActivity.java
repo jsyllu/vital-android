@@ -28,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     // get current user
-    user = FirebaseAuth.getInstance().getCurrentUser();
-    if (user == null) {
-      // not logged in
-    } else {
-      // logged in
-      uID = user.getUid();
-
-    }
-    Toast.makeText(this, "UID: " + uID, Toast.LENGTH_SHORT).show();
+//    user = FirebaseAuth.getInstance().getCurrentUser();
+//    if (user == null) {
+//      // not logged in
+//    } else {
+//      // logged in
+//      uID = user.getUid();
+//
+//    }
+//    Toast.makeText(this, "UID: " + uID, Toast.LENGTH_SHORT).show();
     //UZ22EAAdVhWkxxC2OMIW1MuLXzj1
 
     //Initialize Bottom Navigation View.
@@ -97,6 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.buttonToReg:
                 openRegPage();
+                break;
+
+            case R.id.testLogout:
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(this, "Successfully logged out", Toast.LENGTH_SHORT).show();
                 break;
         }
 
