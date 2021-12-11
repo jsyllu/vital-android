@@ -84,7 +84,7 @@ public class FDCWebService {
 
                         // Iterate through the nutrients list from API response
                         for (int j = 0; j < nutrientsArray.length(); j++) {
-                            JSONObject jnutrient = nutrientsArray.getJSONObject(i);
+                            JSONObject jnutrient = nutrientsArray.getJSONObject(j);
                             if (jnutrient.getString("value").isEmpty()) {
                                 continue;
                             }
@@ -105,6 +105,7 @@ public class FDCWebService {
                     Log.i("WebServiceResponse-FdcID", foods.get(0).getFdcId());
                     Log.i("WebServiceResponse-Description", foods.get(0).getDescription());
                     Log.i("WebServiceResponse-1stNutrients", foods.get(0).getFoodNutrients().get(0).getNutrient().getName());
+                    Log.i("WebServiceResponse-10thNutrients", foods.get(0).getFoodNutrients().get(9).getNutrient().getName());
                     fdcID = foods.get(0).getFdcId();
 
                 } catch (Exception e) {
