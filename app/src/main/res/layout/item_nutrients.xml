@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="15dp">
+
+  <TextView
+    android:id="@+id/item_nutrientName"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/item_nutrientName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="nutrientName"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:layout_marginTop="2dp"
-        android:textAlignment="gravity"
-        />
-<!--    <TextView-->
-<!--        android:id="@+id/item_nutrientAmount"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="nutrientAmount" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/item_nutrientUnit"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="nutrientUnit" />-->
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="nutrientName"
+    android:fontFamily="@font/roboto_medium"
+    android:textColor="@color/primary"
+    android:textSize="16sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <TextView
+    android:id="@+id/item_nutrientAmount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="nutrientAmount"
+    android:textSize="17sp"
+    android:layout_marginEnd="1dp"
+    app:layout_constraintEnd_toStartOf="@id/item_nutrientUnit"
+    app:layout_constraintTop_toTopOf="parent" />
+  <TextView
+    android:id="@+id/item_nutrientUnit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:text="nutrientUnit"
+    android:textSize="14sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

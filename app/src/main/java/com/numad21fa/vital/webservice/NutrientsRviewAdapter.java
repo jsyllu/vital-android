@@ -47,10 +47,14 @@ public class NutrientsRviewAdapter extends RecyclerView.Adapter<NutrientsRviewHo
 
 //    private ArrayList<ItemNutrient> itemNutrientsList;
 //    private ItemCard.ItemClickListener listener;
-    private ArrayList<String> itemNutrientsList;
+    private ArrayList<String> nameList;
+    private ArrayList<String> amountList;
+    private ArrayList<String> unitList;
 
-    public NutrientsRviewAdapter(ArrayList<String> itemNutrientsList) {
-        this.itemNutrientsList = itemNutrientsList;
+    public NutrientsRviewAdapter(ArrayList<String> nameList, ArrayList<String> amountList, ArrayList<String> unitList) {
+        this.nameList = nameList;
+        this.amountList = amountList;
+        this.unitList = unitList;
     }
 //
 //    public void setOnItemClickListener(ItemCard.ItemClickListener listener) {
@@ -65,15 +69,18 @@ public class NutrientsRviewAdapter extends RecyclerView.Adapter<NutrientsRviewHo
 
     @Override
     public void onBindViewHolder(NutrientsRviewHolder holder, int position) {
-        String currentItem = itemNutrientsList.get(position);
-
-        holder.item_nutrientName.setText(currentItem);
+        String currentName = nameList.get(position);
+        holder.item_nutrientName.setText(currentName);
+        String currentAmount = amountList.get(position);
+        holder.item_nutrientAmount.setText(currentAmount);
+        String currentUnit = unitList.get(position);
+        holder.item_nutrientUnit.setText(currentUnit);
 //        holder.item_nutrientAmount.setText(currentItem.getNutrientAmount().toString());
 //        holder.item_nutrientUnit.setText(currentItem.getNutrientUnit());
     }
 
     @Override
     public int getItemCount() {
-        return itemNutrientsList.size();
+        return nameList.size();
     }
 }
