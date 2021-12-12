@@ -70,12 +70,6 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(userName)) {
-                    username.setError("Password cannot be empty!");
-                    return;
-                }
-
-                Toast.makeText(getParent(), "username: " + userName, Toast.LENGTH_SHORT).show();
 
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
