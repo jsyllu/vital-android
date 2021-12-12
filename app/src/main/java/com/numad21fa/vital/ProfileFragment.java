@@ -2,28 +2,43 @@ package com.numad21fa.vital;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass. Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment implements OnClickListener {
-
+  TextView username;
+  TextView email;
+  String usernameString;
+  String emailString;
+  String UID;
+  FirebaseUser user;
+  FirebaseDatabase database;
+  DatabaseReference db_users;
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
   private static final String ARG_PARAM1 = "param1";
   private static final String ARG_PARAM2 = "param2";
-  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
   // TODO: Rename and change types of parameters
   private String mParam1;
   private String mParam2;
@@ -68,6 +83,52 @@ public class ProfileFragment extends Fragment implements OnClickListener {
     Button btn_logout = view.findViewById(R.id.btn_logout);
     btn_login.setOnClickListener(this);
     btn_logout.setOnClickListener(this);
+    // textview
+    username = view.findViewById(R.id.loggedUsername);
+    email = view.findViewById(R.id.loggedEmail);
+    // firebase get
+    user = FirebaseAuth.getInstance().getCurrentUser();
+    if (user != null) {
+      UID = user.getUid();
+      btn_login.setVisibility(View.INVISIBLE);
+      btn_logout.setVisibility(View.VISIBLE);
+    } else {
+      btn_login.setVisibility(View.VISIBLE);
+      btn_logout.setVisibility(View.INVISIBLE);
+    }
+    database = FirebaseDatabase.getInstance();
+    db_users = database.getReference("User");
+    if (UID != null) {
+      db_users.child(UID).child("username").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<DataSnapshot> task) {
+          if (task.isSuccessful()) {
+            usernameString = String.valueOf(task.getResult().getValue());
+            username.setText(usernameString);
+            username.setVisibility(View.VISIBLE);
+            view.findViewById(R.id.textView).setVisibility(View.VISIBLE);
+          } else {
+            Log.e("firebase", "Error getting data", task.getException());
+          }
+        }
+      });
+      db_users.child(UID).child("email").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<DataSnapshot> task) {
+          if (task.isSuccessful()) {
+            emailString = String.valueOf(task.getResult().getValue());
+            email.setText(emailString);
+            email.setVisibility(view.VISIBLE);
+            view.findViewById(R.id.textView2).setVisibility(View.VISIBLE);
+
+          } else {
+            Log.e("firebase", "Error getting data", task.getException());
+          }
+        }
+      });
+
+    }
+
 
     return view;
   }
