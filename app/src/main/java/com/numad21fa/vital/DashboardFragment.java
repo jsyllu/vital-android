@@ -85,14 +85,14 @@ public class DashboardFragment extends Fragment {
                 // in Android CalendarView, January == 0, need +1 back
                 String date = year + "/" + (month_1 + 1) + "/" + day;
                 // TODO: Change View to User's Daily intakes here
-                textView_simple_date.setText("Date Selected: " + date);
-                try {
+//                textView_simple_date.setText("Date Selected: " + date);
+//                try {
                     // Set Time to a Day
                     String startTime = date + " 00:00:00";
                     String endTime = date + " 23:59:59";
                     // Parse it to milliseconds
-                    textView_milli_date.setText("Start: " + simpleDateToMilliDate(startTime) + ", End: " + simpleDateToMilliDate(endTime));
-                    String intakes = new String("Users Intakes for this day: \n");
+//                    textView_milli_date.setText("Start: " + simpleDateToMilliDate(startTime) + ", End: " + simpleDateToMilliDate(endTime));
+                    String intakes = "";
                     switch (date) {
                         case "2021/12/1":
                             intakes += ("Iron, Fe 0.05MG\n");
@@ -116,10 +116,10 @@ public class DashboardFragment extends Fragment {
                     textView_user_intakes.setText(intakes);
 
 
-                } catch (ParseException e) {
-                    textView_milli_date.setText("Parse Error");
-                    e.printStackTrace();
-                }
+//                } catch (ParseException e) {
+//                    textView_milli_date.setText("Parse Error");
+//                    e.printStackTrace();
+//                }
             }
         });
         return view;

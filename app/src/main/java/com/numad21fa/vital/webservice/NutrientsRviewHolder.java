@@ -16,7 +16,7 @@ public class NutrientsRviewHolder extends RecyclerView.ViewHolder {
     public NutrientsRviewHolder(View itemView) {
         super(itemView);
         item_nutrientName = itemView.findViewById(R.id.item_nutrientName);
-//        item_nutrientAmount = itemView.findViewById(R.id.item_nutrientAmount);
-//        item_nutrientUnit = itemView.findViewById(R.id.item_nutrientUnit);
+        item_nutrientAmount = itemView.findViewById(R.id.item_nutrientAmount);
+        item_nutrientUnit = itemView.findViewById(R.id.item_nutrientUnit);
     }
 }

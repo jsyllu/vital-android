@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".DashboardFragment">
+
+  <!-- TODO: Update blank fragment layout -->
+  <CalendarView
+    android:id="@+id/calendarView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp" />
+
+  <TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardFragment">
+    android:fontFamily="@font/roboto_medium"
+    android:textColor="@color/black"
+    android:text="Dashboard"
+    android:textFontWeight="500"
+    android:textSize="20sp" />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="dashboard layout"
-        android:textSize="24sp" />
+  <TextView
+    android:id="@+id/textView_simple_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:gravity="center" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp" />
+  <TextView
+    android:id="@+id/textView_milli_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="80dp"
+    android:gravity="center" />
 
-    <TextView
-        android:id="@+id/textView_simple_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:text="Date Selected in simpleDate: ..." />
+  <TextView
+    android:id="@+id/textView_user_intakes_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="350dp"
+    android:fontFamily="@font/roboto_medium"
+    android:textColor="@color/black"
+    android:textSize="18sp"
+    android:gravity="center"
+    android:text="~ User Intakes ~" />
 
-    <TextView
-        android:id="@+id/textView_milli_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:text="Date Selected in milliseconds: ..." />
-
-    <TextView
-        android:id="@+id/textView_user_intakes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="450dp"
-        android:gravity="center"
-        android:text="User's Intakes: ..." />
+  <TextView
+    android:id="@+id/textView_user_intakes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="380dp"
+    android:fontFamily="@font/roboto_medium"
+    android:textSize="16sp"
+    android:gravity="center" />
 </FrameLayout>

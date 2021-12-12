@@ -27,7 +27,7 @@ public class ShakyActivity extends AppCompatActivity {
 
     private double accelCurrVal;
     private double accelPrevVal;
-    private double accelThreshold = 0.05;
+    private double accelThreshold = 0.5;
 
     // Instantiate a new sensorEventListener to catch motions on 3 directions
     private SensorEventListener sensorEventListener = new SensorEventListener() {
