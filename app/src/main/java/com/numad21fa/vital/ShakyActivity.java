@@ -11,10 +11,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ShakyActivity extends AppCompatActivity {
-    TextView txt_currAccel, txt_prevAccel, txt_diffAccel;
+    TextView text_recommended_food;
+    List<String> recommendation_list = new ArrayList<>(){};
+    // TODO: randomly pick food from recommendation list when shaking
 
     // Sensor variables
     private SensorManager mSensorManager;
@@ -53,10 +57,7 @@ public class ShakyActivity extends AppCompatActivity {
 
 
             // update on TextView
-            txt_currAccel.setText("Current Accelerometer = " + Math.round(accelCurrVal));
-            txt_prevAccel.setText("Previous Accelerometer = " +  Math.round(accelPrevVal));
-            txt_diffAccel.setText("Accepted Difference Accelerometer = " + Math.round(accelDiffVal));
-
+            text_recommended_food.setText("Current Accelerometer = " + Math.round(accelCurrVal));
 
         }
 
@@ -71,9 +72,7 @@ public class ShakyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shaky);
 
-        txt_currAccel = findViewById(R.id.txt_currAccel);
-        txt_prevAccel = findViewById(R.id.txt_prevAccel);
-        txt_diffAccel = findViewById(R.id.txt_diffAccel);
+        text_recommended_food = findViewById(R.id.text_recommended_food);
 
         // Constructor for Accelerometer Sensor
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);

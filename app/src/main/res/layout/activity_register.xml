@@ -103,8 +103,8 @@
         android:backgroundTint="@color/white"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:text="Already have account?
-        Login here"
+        android:layout_marginTop="20dp"
+        android:text="Already have account?\nLogin here"
         android:textColor="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
