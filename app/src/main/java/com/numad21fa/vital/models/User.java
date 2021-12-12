@@ -12,6 +12,7 @@ public class User {
   String password;
   String firstname;
   String lastname;
+  String username;
   Date lastLogIn;
   List<DailyIntake> dailyIntakeList; // chronological order
   Map<String, String> nutrientUnitMap; // key: foodNutrient.nutrient.name, value:foodNutrient.nutrient.unitName
@@ -22,6 +23,16 @@ public class User {
     this.lastLogIn = this.createdAt;
     this.dailyIntakeList = new ArrayList<>();
     this.nutrientUnitMap = new HashMap<>();
+  }
+
+  public User(String email, String username, String password) {
+    this.createdAt = new Date();
+    this.lastLogIn = this.createdAt;
+    this.dailyIntakeList = new ArrayList<>();
+    this.nutrientUnitMap = new HashMap<>();
+    this.username = username;
+    this.email = email;
+    this.password = password;
   }
 
   public User(String email, String password, String firstname, String lastname) {
@@ -102,5 +113,17 @@ public class User {
     // TODO: to be updated
     // iterate dailyIntakeList for 7 days and sum nutrients amount in to nutrient7Days
     return nutrient7Days;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public void setNutrient7Days(Map<String, Double> nutrient7Days) {
+    this.nutrient7Days = nutrient7Days;
   }
 }

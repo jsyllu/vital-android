@@ -10,12 +10,12 @@ import com.numad21fa.vital.R;
 
 import java.util.ArrayList;
 
-public class RviewAdapter extends RecyclerView.Adapter<RviewHolder> {
+public class ReviewAdapter extends RecyclerView.Adapter<ReviewHolder> {
 
     private ArrayList<ItemCard> itemList;
     private ItemCard.ItemClickListener listener;
 
-    public RviewAdapter(ArrayList<ItemCard> itemList) {
+    public ReviewAdapter(ArrayList<ItemCard> itemList) {
         this.itemList = itemList;
     }
 
@@ -24,13 +24,13 @@ public class RviewAdapter extends RecyclerView.Adapter<RviewHolder> {
     }
 
     @Override
-    public RviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ReviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_item_card, parent, false);
-        return new RviewHolder(view, listener);
+        return new ReviewHolder(view, listener);
     }
 
     @Override
-    public void onBindViewHolder(RviewHolder holder, int position) {
+    public void onBindViewHolder(ReviewHolder holder, int position) {
         ItemCard currentItem = itemList.get(position);
 
         holder.item_card_description_txt.setText(currentItem.getDescription());

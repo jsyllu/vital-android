@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".HomeSearchFragment">
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--  xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--  android:layout_width="match_parent"-->
+<!--  android:layout_height="match_parent">-->
+<LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/header_hi_user"
+    android:textFontWeight="500"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/header_description"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="@string/header_hi_user_description"
+    android:textFontWeight="500"
+    android:textSize="18sp" />
+
+  <EditText
+    android:id="@+id/edit_search_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
+    android:padding="10dp"
+    android:paddingStart="20dp"
+    android:autofillHints="@string/searchPlaceholder"
+    android:background="@drawable/input_style"
+    android:drawablePadding="15dp"
+    android:hint="@string/searchPlaceholder"
+    android:imeOptions="actionSearch"
+    android:inputType="textShortMessage"
+    android:maxLines="1"
+    android:textColor="@color/primary"/>
+  <!--    android:drawableStart="@drawable/ic_search_style"-->
+
+
+  <ImageButton
+    android:id="@+id/btn_search"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="25dp"
+    android:backgroundTint="@color/white"
+    android:src="@drawable/ic_search_focused"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="97dp"
+    android:contentDescription="Search Food" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_list_view"
+    android:layout_width="390dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp" />
+
+  <TextView
+    android:id="@+id/num_of_results"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp" />
+
+</LinearLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+</FrameLayout>

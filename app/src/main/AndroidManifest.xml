@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.numad21fa.vital">
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.numad21fa.vital">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,20 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vital">
         <activity
-            android:name=".webservice.RviewAdapter"
-            android:exported="true" />
+            android:name=".webservice.ReviewAdapter"
+            android:exported="true"
+          tools:ignore="Instantiatable" />
         <activity
-            android:name=".webservice.RviewHolder"
-            android:exported="true" />
+            android:name=".webservice.ReviewHolder"
+            android:exported="true"
+          tools:ignore="Instantiatable" />
         <activity
             android:name=".webservice.ItemCard"
-            android:exported="true" />
+            android:exported="true"
+          tools:ignore="Instantiatable" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,10 +36,13 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
+          android:name=".RegisterActivity"
+          android:exported="true" />
+        <activity
             android:name=".webservice.FDCWebServiceActivity"
             android:exported="true" />
         <activity
-            android:name=".shaky.ShakyActivity"
+            android:name=".ShakyActivity"
             android:exported="true" />
     </application>
 

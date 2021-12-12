@@ -8,12 +8,12 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.numad21fa.vital.R;
 
-public class RviewHolder extends RecyclerView.ViewHolder {
+public class ReviewHolder extends RecyclerView.ViewHolder {
     public TextView item_card_description_txt;
     public FloatingActionButton item_card_add_btn;
 
     // fetch the related ItemCard instance from the view
-    public RviewHolder(View itemView, final ItemCard.ItemClickListener listener) {
+    public ReviewHolder(View itemView, final ItemCard.ItemClickListener listener) {
         super(itemView);
         item_card_description_txt = itemView.findViewById(R.id.item_card_description_txt);
         item_card_add_btn = itemView.findViewById(R.id.item_card_add_btn);
