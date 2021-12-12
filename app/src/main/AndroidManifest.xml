@@ -3,47 +3,50 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.numad21fa.vital">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+  <application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/brand"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.Vital">
+    <activity
+      android:exported="true"
+      android:name=".webservice.ReviewAdapter"
+      tools:ignore="Instantiatable" />
+    <activity
+      android:exported="true"
+      android:name=".webservice.DialogueActivity" />
+    <activity
+      android:exported="true"
+      android:name=".webservice.ReviewHolder"
+      tools:ignore="Instantiatable" />
+    <activity
+      android:exported="true"
+      android:name=".webservice.ItemCard"
+      tools:ignore="Instantiatable" />
+    <activity
+      android:exported="true"
+      android:name=".MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+      android:exported="true"
+      android:name=".LoginActivity" />
+    <activity
+      android:exported="true"
+      android:name=".RegisterActivity" />
+    <activity
+      android:exported="true"
+      android:name=".webservice.FDCWebServiceActivity" />
+    <activity
+      android:exported="true"
+      android:name=".ShakyActivity" />
+  </application>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/brand"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Vital">
-        <activity
-            android:name=".webservice.ReviewAdapter"
-            android:exported="true"
-          tools:ignore="Instantiatable" />
-        <activity
-            android:name=".webservice.ReviewHolder"
-            android:exported="true"
-          tools:ignore="Instantiatable" />
-        <activity
-            android:name=".webservice.ItemCard"
-            android:exported="true"
-          tools:ignore="Instantiatable" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-          android:name=".RegisterActivity"
-          android:exported="true" />
-        <activity
-            android:name=".webservice.FDCWebServiceActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ShakyActivity"
-            android:exported="true" />
-    </application>
+  <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
