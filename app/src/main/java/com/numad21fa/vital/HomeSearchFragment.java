@@ -18,6 +18,14 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.numad21fa.vital.models.FDCFood;
 import com.numad21fa.vital.models.FDCFoodNutrient;
 import com.numad21fa.vital.webservice.DialogueActivity;
@@ -41,6 +49,12 @@ public class HomeSearchFragment extends Fragment implements OnClickListener{
   String food_name;
   List<FDCFood> foods;
   TextView num_of_results;
+  TextView username;
+  String usernameString;
+  String UID;
+  FirebaseUser user;
+  FirebaseDatabase database;
+  DatabaseReference db_users;
   private ArrayList<ItemCard> itemList = new ArrayList<>();
   private RecyclerView recyclerView;
   private ReviewAdapter reviewAdapter;
@@ -95,6 +109,7 @@ public class HomeSearchFragment extends Fragment implements OnClickListener{
     // Inflate the layout for this fragment
     context = container.getContext();
     View view = inflater.inflate(R.layout.fragment_search, container, false);
+    username = view.findViewById(R.id.header);
     edit_search_input = view.findViewById(R.id.edit_search_input);
     btn_search = view.findViewById(R.id.btn_search);
     num_of_results = view.findViewById(R.id.num_of_results);
@@ -103,6 +118,28 @@ public class HomeSearchFragment extends Fragment implements OnClickListener{
     rLayoutManger = new LinearLayoutManager(getContext());
     recyclerView = view.findViewById(R.id.recycler_list_view);
     recyclerView.setHasFixedSize(true);
+    user = FirebaseAuth.getInstance().getCurrentUser();
+    database = FirebaseDatabase.getInstance();
+    db_users = database.getReference("User");
+    if (user == null) {
+      // not logged in
+    } else {
+      // logged in
+      UID = user.getUid();
+    }
+    if (UID != null) {
+      db_users.child(UID).child("username").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<DataSnapshot> task) {
+          if (task.isSuccessful()) {
+            usernameString = String.valueOf(task.getResult().getValue());
+            username.setText("Hi " + usernameString + ", \uD83D\uDC4B");
+          } else {
+            Log.e("firebase", "Error getting data", task.getException());
+          }
+        }
+      });
+    }
     return view;
   }
 

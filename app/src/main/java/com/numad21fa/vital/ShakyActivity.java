@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class ShakyActivity extends AppCompatActivity {
@@ -49,6 +50,8 @@ public class ShakyActivity extends AppCompatActivity {
             if (accelDiffVal > accelThreshold) {
                 Toast.makeText(ShakyActivity.this, "ShakyShaky detected, new food is recommended", Toast.LENGTH_LONG).show();
                 Log.i("Shaky-detected", "ShakyShaky detected, new food is recommended");
+                String randFood = recommendation_list.get(new Random().nextInt(recommendation_list.size()));
+                text_recommended_food.setText(randFood);
             }
 
             // update Previous Accelerometer value
@@ -57,7 +60,7 @@ public class ShakyActivity extends AppCompatActivity {
 
 
             // update on TextView
-            text_recommended_food.setText("Current Accelerometer = " + Math.round(accelCurrVal));
+//            text_recommended_food.setText("No Shaky event is detected");
 
         }
 
@@ -77,6 +80,17 @@ public class ShakyActivity extends AppCompatActivity {
         // Constructor for Accelerometer Sensor
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        recommendation_list.add("Apples, fuji, with skin, raw");
+        recommendation_list.add("Pears, raw, bartlett");
+        recommendation_list.add("fish, haddock, raw");
+        recommendation_list.add("fish, pollock, raw");
+        recommendation_list.add("Frankfurter, beef, unheated");
+        recommendation_list.add("sausage, turkey, breakfast links, mild, raw");
+        recommendation_list.add("Pork, cured, bacon, cooked, restaurant");
+        recommendation_list.add("Restaurant, Chinese, sweet and sour pork");
+
+
+
 
         Log.i("Shaky-mAccelerometer-status", String.valueOf(mAccelerometer));
     }
