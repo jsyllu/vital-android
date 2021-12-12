@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/item_nutrientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nutrientName"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:textAlignment="gravity"
+        />
+<!--    <TextView-->
+<!--        android:id="@+id/item_nutrientAmount"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="nutrientAmount" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/item_nutrientUnit"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="nutrientUnit" />-->
+</LinearLayout>

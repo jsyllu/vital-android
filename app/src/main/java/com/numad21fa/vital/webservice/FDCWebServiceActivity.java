@@ -1,23 +1,30 @@
 package com.numad21fa.vital.webservice;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.numad21fa.vital.R;
 import com.numad21fa.vital.models.FDCFood;
+import com.numad21fa.vital.models.FDCFoodNutrient;
+import com.numad21fa.vital.models.FDCNutrient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +37,15 @@ public class FDCWebServiceActivity extends AppCompatActivity {
     List<FDCFood> foods;
     TextView txtView_results;
 
+    // RcycleView Foods
     private ArrayList<ItemCard> itemList = new ArrayList<>();
 
     private RecyclerView recyclerView;
     private ReviewAdapter reviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
+
+    // RecycleView Nutrients
+    private ArrayList<ItemNutrient> itemNutrientsList = new ArrayList<>();
 
     private static final String instanceKey = "instanceKey";
     private static final String indexItems = "indexItems";
@@ -134,11 +145,36 @@ public class FDCWebServiceActivity extends AppCompatActivity {
         ItemCard.ItemClickListener itemClickListener = new ItemCard.ItemClickListener() {
             @Override
             public void onItemClick(int position) {
-//                Uri url = Uri.parse(itemList.get(position).getItemLink());
-                // TODO Add Item to USER
-                Uri url = Uri.parse("https://google.ca");
-                Intent intent = new Intent(Intent.ACTION_VIEW, url);
-                startActivity(intent);
+//                // TODO Add Item to USER
+//                Uri url = Uri.parse("https://google.ca");
+//                Intent intent = new Intent(Intent.ACTION_VIEW, url);
+//                startActivity(intent);
+
+                // TODO: Open Dialogue here
+                Log.i("ItemCard - position", String.valueOf(position));
+                Log.i("ItemCard - Nutrients", String.valueOf(foods.get(position).getFoodNutrients()));
+                ArrayList<FDCFoodNutrient> foodNutrientsList = new ArrayList<>();
+                ArrayList<String> foodNutrientsInfoList = new ArrayList<>();
+
+                // Cast nutrients into one String
+                foodNutrientsList = (ArrayList<FDCFoodNutrient>) foods.get(position).getFoodNutrients();
+
+                Log.i("ItemCard - foodNutrientsListSize", String.valueOf(foodNutrientsList.size()));
+//                for (int j=0; j < foodNutrientsList.size(); j++) {
+//                    Log.i("ItemCard - NutrientName", String.valueOf(foodNutrientsList.get(j).getNutrient().getName()));
+//                    Log.i("ItemCard - NutrientAmount", String.valueOf(foodNutrientsList.get(j).getAmount()));
+//                    Log.i("ItemCard - NutrientUnit", String.valueOf(foodNutrientsList.get(j).getNutrient().getUnitName()));
+//                    String nutrientName = foodNutrientsList.get(j).getNutrient().getName();
+//                    Double nutrientAmount = foodNutrientsList.get(j).getAmount();
+//                    String nutrientUnit = foodNutrientsList.get(j).getNutrient().getUnitName();
+//                    String nutrientInfo = nutrientName + ' ' + nutrientAmount + nutrientUnit;
+//                    foodNutrientsInfoList.add(nutrientInfo);
+//                }
+
+                createNutrientsRecyclerView();
+                openNutrientsDialog(position, foodNutrientsList);
+
+
             }
         };
         reviewAdapter.setOnItemClickListener(itemClickListener);
@@ -165,4 +201,63 @@ public class FDCWebServiceActivity extends AppCompatActivity {
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+    private void createNutrientsRecyclerView(){
+//        nutrientsrLayoutManger = new LinearLayoutManager(this);
+//        nutrientsRview = findViewById(R.id.nutrients_recycler_view);
+//        nutrientsRview.setHasFixedSize(true);
+
+        // Instantiate a new itemList
+        itemNutrientsList = new ArrayList<ItemNutrient>();
+    }
+
+    // New dialogue window prompts up for Name and Link inputs
+    private void openNutrientsDialog(int position, ArrayList<FDCFoodNutrient> foodNutrientsList) {
+//        AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
+//        newDialog.setTitle("Display Nutrients");
+//
+//        View newNutrientsView = LayoutInflater.from(this).inflate(R.layout.activity_food_nutrients_dialog,
+//                findViewById(R.id.content), false);
+
+//        ListView mNutrientsList = newNutrientsView.findViewById(R.id.list_view_nutrients);
+//        ArrayAdapter adapter = new ArrayAdapter<String>(this, position, stringList);
+//        mNutrientsList.setAdapter(adapter);
+
+
+        ArrayList<String> foodNutrientsInfoList = new ArrayList<>();
+        for (int j = 0; j < foodNutrientsList.size(); j++) {
+            FDCFoodNutrient nutrient = foodNutrientsList.get(j);
+            // Create a new ItemNutrient for this food
+            String nutrientName = foodNutrientsList.get(j).getNutrient().getName();
+            Double nutrientAmount = foodNutrientsList.get(j).getAmount();
+            String nutrientUnit = foodNutrientsList.get(j).getNutrient().getUnitName();
+
+            itemNutrientsList.add(new ItemNutrient(nutrientName, nutrientAmount, nutrientUnit));
+            Log.i("ItemCard - NutrientName", String.valueOf(foodNutrientsList.get(j).getNutrient().getName()));
+            Log.i("ItemCard - NutrientAmount", String.valueOf(foodNutrientsList.get(j).getAmount()));
+            Log.i("ItemCard - NutrientUnit", String.valueOf(foodNutrientsList.get(j).getNutrient().getUnitName()));
+            String nutrientInfo = nutrientName + ' ' + nutrientAmount + nutrientUnit;
+            foodNutrientsInfoList.add(nutrientInfo);
+        }
+
+        Intent intent = new Intent(this, DialogueActivity.class);
+        intent.putExtra("itemList", foodNutrientsInfoList);
+        startActivity(intent);
+
+//        nutrientsRviewAdapter = new NutrientsRviewAdapter(itemNutrientsList);
+//        nutrientsRview.setAdapter(nutrientsRviewAdapter);
+//        nutrientsRview.setLayoutManager(nutrientsrLayoutManger);
+
+//        newDialog.setView(newNutrientsView);
+//
+//        newDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//        newDialog.show();
+//    }
+    }
+
 }
