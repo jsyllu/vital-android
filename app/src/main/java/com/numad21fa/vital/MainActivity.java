@@ -12,7 +12,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.numad21fa.vital.shaky.ShakyActivity;
+//import com.numad21fa.vital.shaky.ShakyActivity;
 import com.numad21fa.vital.webservice.FDCWebServiceActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentWebService);
     }
 
-    public void openShakyView() {
-        Intent intentShaky = new Intent(this, ShakyActivity.class);
-        startActivity(intentShaky);
-    }
+//    public void openShakyView() {
+//        Intent intentShaky = new Intent(this, ShakyActivity.class);
+//        startActivity(intentShaky);
+//    }
 
     public void onClick(View view) {
         switch (view.getId()) {
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnWebService:
                 openWebServiceView();
                 break;
-            case R.id.btnShaky:
-                openShakyView();
-                break;
+//            case R.id.btnShaky:
+//                openShakyView();
+//                break;
         }
 
     }

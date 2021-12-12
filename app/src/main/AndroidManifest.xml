@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vital">
         <activity
+            android:name=".webservice.DialogueActivity"
+            android:exported="true" />
+        <activity
             android:name=".webservice.RviewAdapter"
             android:exported="true" />
         <activity
@@ -35,9 +38,7 @@
         <activity
             android:name=".webservice.FDCWebServiceActivity"
             android:exported="true" />
-        <activity
-            android:name=".shaky.ShakyActivity"
-            android:exported="true" />
+
     </application>
 
 </manifest>
