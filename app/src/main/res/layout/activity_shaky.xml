@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:layout_marginStart="15dp"
+  android:layout_marginEnd="15dp"
+  android:layout_marginTop="5dp"
+  tools:context=".ShakyActivity">
+
+  <TextView
+    android:id="@+id/brand"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/brand"
+    android:textSize="26sp"
+    android:textFontWeight="500"
+    android:layout_marginTop="10dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <ImageButton
+    android:id="@+id/btn_shaky"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:srcCompat="@drawable/icon_shacky"
+    android:backgroundTint="@color/white"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <TextView
+    android:id="@+id/header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="@string/header_get_inspired"
+    android:textSize="24sp"
+    android:textFontWeight="500"
+    app:layout_constraintTop_toBottomOf="@id/brand"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+  <TextView
+    android:id="@+id/text1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:layout_marginTop="35dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/header"
+    android:text="@string/shake_your_phone"/>
+
+  <TextView
+    android:id="@+id/text2"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:text="@string/get_healthy_meal_ideas"
+    android:textSize="20sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/text1" />
+
+  <TextView
+    android:id="@+id/txt_currAccel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:text="txt_currAccel"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.712" />
+  <TextView
+    android:id="@+id/txt_prevAccel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:text="txt_prevAccel"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.896" />
+  <TextView
+    android:id="@+id/txt_diffAccel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="40dp"
+    android:text="txt_diffAccel"
+    android:textSize="25sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.503"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.477" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

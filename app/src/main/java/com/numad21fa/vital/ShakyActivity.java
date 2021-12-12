@@ -1,4 +1,4 @@
-package com.numad21fa.vital.shaky;
+package com.numad21fa.vital;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.numad21fa.vital.R;
 
 
 public class ShakyActivity extends AppCompatActivity {
@@ -71,7 +69,7 @@ public class ShakyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shaky_test);
+        setContentView(R.layout.activity_shaky);
 
         txt_currAccel = findViewById(R.id.txt_currAccel);
         txt_prevAccel = findViewById(R.id.txt_prevAccel);

@@ -33,7 +33,7 @@ public class FDCWebServiceActivity extends AppCompatActivity {
     private ArrayList<ItemCard> itemList = new ArrayList<>();
 
     private RecyclerView recyclerView;
-    private RviewAdapter rviewAdapter;
+    private ReviewAdapter reviewAdapter;
     private RecyclerView.LayoutManager rLayoutManger;
 
     private static final String instanceKey = "instanceKey";
@@ -130,7 +130,7 @@ public class FDCWebServiceActivity extends AppCompatActivity {
             Log.i("WebActivityItemList - Size", String.valueOf(itemList.size()));
         }
 
-        rviewAdapter = new RviewAdapter(itemList);
+        reviewAdapter = new ReviewAdapter(itemList);
         ItemCard.ItemClickListener itemClickListener = new ItemCard.ItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -141,8 +141,8 @@ public class FDCWebServiceActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         };
-        rviewAdapter.setOnItemClickListener(itemClickListener);
-        recyclerView.setAdapter(rviewAdapter);
+        reviewAdapter.setOnItemClickListener(itemClickListener);
+        recyclerView.setAdapter(reviewAdapter);
         recyclerView.setLayoutManager(rLayoutManger);
 
         // Set TextView for result
@@ -160,7 +160,7 @@ public class FDCWebServiceActivity extends AppCompatActivity {
                 Toast.makeText(FDCWebServiceActivity.this, "This item has been deleted", Toast.LENGTH_SHORT).show();
                 int position = viewHolder.getLayoutPosition();
                 itemList.remove(position);
-                rviewAdapter.notifyItemRemoved(position);
+                reviewAdapter.notifyItemRemoved(position);
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);

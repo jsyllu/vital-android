@@ -4,22 +4,55 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:layout_marginStart="15dp"
+  android:layout_marginEnd="15dp"
+  android:layout_marginTop="5dp"
   tools:context=".MainActivity">
 
-  <androidx.fragment.app.FragmentContainerView
-    android:id="@+id/navHostFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
-    android:layout_marginTop="15dp"
-    android:name="androidx.navigation.fragment.NavHostFragment"
-    app:defaultNavHost="true"
-    app:navGraph="@navigation/navbar"
+  <TextView
+    android:id="@+id/brand"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/brand"
+    android:textSize="26sp"
+    android:textFontWeight="500"
+    android:layout_marginTop="10dp"
     app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <ImageButton
+    android:id="@+id/btn_shaky"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:srcCompat="@drawable/icon_shacky"
+    android:backgroundTint="@color/white"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView" />
+    android:onClick="onClick"
+    android:contentDescription="Open ShakyShaky View" />
+
+  <FrameLayout
+    android:id="@+id/navHostFragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginTop="10dp"
+    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/brand" />
+
+
+<!--  <androidx.fragment.app.FragmentContainerView-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:id="@+id/navHostFragment"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="0dp"-->
+<!--    android:layout_marginTop="10dp"-->
+<!--    android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--    app:defaultNavHost="true"-->
+<!--    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@id/brand"-->
+<!--    app:navGraph="@navigation/navbar" />-->
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottomNavigationView"
@@ -31,30 +64,4 @@
     app:layout_constraintStart_toStartOf="parent"
     app:menu="@menu/bottom_menu" />
 
-  <Button
-      android:id="@+id/btnWebService"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:backgroundTint="#658C37"
-      android:onClick="onClick"
-      android:text="FDC API TEST"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.1"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.7" />
-  <Button
-      android:id="@+id/btnShaky"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:backgroundTint="#658C37"
-      android:onClick="onClick"
-      android:text="Shaky TEST"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.9"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,6 @@
     <string name="get_nutrients_by_fdcid">Get Nutrients By FDCID</string>
     <string name="get_fdc_id">GET FDC ID</string>
     <string name="food_entries">Food Entries</string>
+    <string name="shake_your_phone">Shake your phone,</string>
+    <string name="get_healthy_meal_ideas">Get healthy meal ideas!</string>
 </resources>
