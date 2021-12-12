@@ -19,9 +19,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.numad21fa.vital.models.FDCFood;
+import com.numad21fa.vital.models.FDCFoodNutrient;
+import com.numad21fa.vital.webservice.DialogueActivity;
 import com.numad21fa.vital.webservice.FDCWebService;
 import com.numad21fa.vital.webservice.FDCWebServiceActivity;
 import com.numad21fa.vital.webservice.ItemCard;
+import com.numad21fa.vital.webservice.ItemNutrient;
 import com.numad21fa.vital.webservice.ReviewAdapter;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,9 +154,27 @@ public class HomeSearchFragment extends Fragment implements OnClickListener{
       public void onItemClick(int position) {
 //                Uri url = Uri.parse(itemList.get(position).getItemLink());
         // TODO Add Item to USER
-        Uri url = Uri.parse("https://google.ca");
-        Intent intent = new Intent(Intent.ACTION_VIEW, url);
-        startActivity(intent);
+        Log.i("ItemCard - position", String.valueOf(position));
+        Log.i("ItemCard - Nutrients", String.valueOf(foods.get(position).getFoodNutrients()));
+        ArrayList<FDCFoodNutrient> foodNutrientsList = new ArrayList<>();
+        ArrayList<String> foodNutrientsInfoList = new ArrayList<>();
+
+        // Cast nutrients into one String
+        foodNutrientsList = (ArrayList<FDCFoodNutrient>) foods.get(position).getFoodNutrients();
+
+        Log.i("ItemCard - foodNutrientsListSize", String.valueOf(foodNutrientsList.size()));
+//                for (int j=0; j < foodNutrientsList.size(); j++) {
+//                    Log.i("ItemCard - NutrientName", String.valueOf(foodNutrientsList.get(j).getNutrient().getName()));
+//                    Log.i("ItemCard - NutrientAmount", String.valueOf(foodNutrientsList.get(j).getAmount()));
+//                    Log.i("ItemCard - NutrientUnit", String.valueOf(foodNutrientsList.get(j).getNutrient().getUnitName()));
+//                    String nutrientName = foodNutrientsList.get(j).getNutrient().getName();
+//                    Double nutrientAmount = foodNutrientsList.get(j).getAmount();
+//                    String nutrientUnit = foodNutrientsList.get(j).getNutrient().getUnitName();
+//                    String nutrientInfo = nutrientName + ' ' + nutrientAmount + nutrientUnit;
+//                    foodNutrientsInfoList.add(nutrientInfo);
+//                }
+
+        openNutrientsDialog(position, foodNutrientsList);
       }
     };
     reviewAdapter.setOnItemClickListener(itemClickListener);
@@ -179,5 +200,39 @@ public class HomeSearchFragment extends Fragment implements OnClickListener{
       }
     });
     itemTouchHelper.attachToRecyclerView(recyclerView);
+  }
+
+  // New dialogue window prompts up for Name and Link inputs
+  private void openNutrientsDialog(int position, ArrayList<FDCFoodNutrient> foodNutrientsList) {
+//        AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
+//        newDialog.setTitle("Display Nutrients");
+//
+//        View newNutrientsView = LayoutInflater.from(this).inflate(R.layout.activity_food_nutrients_dialog,
+//                findViewById(R.id.content), false);
+
+//        ListView mNutrientsList = newNutrientsView.findViewById(R.id.list_view_nutrients);
+//        ArrayAdapter adapter = new ArrayAdapter<String>(this, position, stringList);
+//        mNutrientsList.setAdapter(adapter);
+
+
+    ArrayList<String> foodNutrientsInfoList = new ArrayList<>();
+    for (int j = 0; j < foodNutrientsList.size(); j++) {
+      FDCFoodNutrient nutrient = foodNutrientsList.get(j);
+      // Create a new ItemNutrient for this food
+      String nutrientName = foodNutrientsList.get(j).getNutrient().getName();
+      Double nutrientAmount = foodNutrientsList.get(j).getAmount();
+      String nutrientUnit = foodNutrientsList.get(j).getNutrient().getUnitName();
+
+      Log.i("ItemCard - NutrientName", String.valueOf(foodNutrientsList.get(j).getNutrient().getName()));
+      Log.i("ItemCard - NutrientAmount", String.valueOf(foodNutrientsList.get(j).getAmount()));
+      Log.i("ItemCard - NutrientUnit", String.valueOf(foodNutrientsList.get(j).getNutrient().getUnitName()));
+      String nutrientInfo = nutrientName + ' ' + nutrientAmount + nutrientUnit;
+      foodNutrientsInfoList.add(nutrientInfo);
+    }
+
+    Intent intent = new Intent(getActivity(), DialogueActivity.class);
+    intent.putExtra("itemList", foodNutrientsInfoList);
+    startActivity(intent);
+
   }
 }
