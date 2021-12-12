@@ -6,7 +6,7 @@
     <string name="header_login">Log In</string>
     <string name="header_register">Register</string>
     <string name="header_profile">Profile</string>
-    <string name="header_hi_user">Hi Jess, 👋</string>
+    <string name="header_hi_user">Hi 👋</string>
     <string name="header_hi_user_description">Ready to trace your vitality today?</string>
     <string name="header_dashboard">Dashboard</string>
     <string name="header_search_results">Search Results</string>
