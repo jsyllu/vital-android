@@ -75,6 +75,9 @@ public class DashboardFragment extends Fragment {
         // Get the selected of CalendarView in simpleDate format
         TextView textView_simple_date = view.findViewById(R.id.textView_simple_date);
 
+        // Get the selected of textView_user_intakes
+        TextView textView_user_intakes = view.findViewById(R.id.textView_user_intakes);
+
         // Set a Select Date listener
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -89,6 +92,30 @@ public class DashboardFragment extends Fragment {
                     String endTime = date + " 23:59:59";
                     // Parse it to milliseconds
                     textView_milli_date.setText("Start: " + simpleDateToMilliDate(startTime) + ", End: " + simpleDateToMilliDate(endTime));
+                    String intakes = new String("Users Intakes for this day: \n");
+                    switch (date) {
+                        case "2021/12/1":
+                            intakes += ("Iron, Fe 0.05MG\n");
+                            intakes += ("Magnesium, Mg 12.85MG\n");
+                            intakes += ("Phosphorus, P, 10.53MG\n");
+                            intakes += ("Potassium, K, 305MG\n");
+                            intakes += ("Sodium, Na 5MG\n");
+                            intakes += ("Zinc, Zn 0.05MG\n");
+                            break;
+
+                        case "2021/12/10":
+                            intakes += ("Iron, Fe 0.08MG\n");
+                            intakes += ("Magnesium, Mg 16.85MG\n");
+                            intakes += ("Potassium, K, 235MG\n");
+                            intakes += ("Sodium, Na 4.3MG\n");
+                            intakes += ("Zinc, Zn 0.02MG\n");
+                            break;
+                        default:
+                            intakes += ("No records found, Please try another day");
+                    }
+                    textView_user_intakes.setText(intakes);
+
+
                 } catch (ParseException e) {
                     textView_milli_date.setText("Parse Error");
                     e.printStackTrace();
