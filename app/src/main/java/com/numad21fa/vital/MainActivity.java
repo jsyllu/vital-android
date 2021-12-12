@@ -1,6 +1,4 @@
 package com.numad21fa.vital;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import android.view.MenuItem;
@@ -8,18 +6,19 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.fragment.app.Fragment;
+import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.numad21fa.vital.models.FDCFood;
-import com.numad21fa.vital.webservice.FDCWebServiceActivity;
 import com.numad21fa.vital.webservice.ItemCard;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, OnClickListener {
 
@@ -28,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private EditText edit_search_input;
     private List<FDCFood> search_result_foods;
     private ArrayList<ItemCard> search_result_item_list_view;
+    private FirebaseUser user;
+    private String uID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.navHostFragment, new HomeSearchFragment()).commit();
+        // get current user
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+          // not logged in
+        } else {
+          // logged in
+          uID = user.getUid();
+
+      }
+      Toast.makeText(this, "UID: " + uID, Toast.LENGTH_SHORT).show();
+      //UZ22EAAdVhWkxxC2OMIW1MuLXzj1
 //                bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
 
