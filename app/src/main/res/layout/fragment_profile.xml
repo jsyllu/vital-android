@@ -10,25 +10,71 @@
   <!-- TODO: Update blank fragment layout -->
 
   <Button
-    android:id="@+id/btn_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="32dp"
-    android:text="@string/header_login"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+      android:id="@+id/btn_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="144dp"
+      android:layout_marginBottom="220dp"
+      android:text="@string/header_login"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
 
   <Button
       android:id="@+id/btn_logout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="72dp"
-      android:layout_marginBottom="563dp"
+      android:layout_marginStart="136dp"
+      android:layout_marginTop="68dp"
       android:text="log out"
-      app:layout_constraintTop_toBottomOf="@+id/btn_login"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"/>
+      app:layout_constraintTop_toBottomOf="@+id/loggedEmail"
+      app:layout_constraintVertical_bias="0.014" />
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="4dp"
+      android:layout_marginBottom="76dp"
+      android:text="Username"
+      android:visibility="invisible"
+      app:layout_constraintBottom_toTopOf="@+id/textView2"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+      android:id="@+id/textView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="60dp"
+      android:text="Email"
+      android:visibility="invisible"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/loggedUsername" />
+
+  <EditText
+      android:id="@+id/loggedEmail"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="64dp"
+      android:layout_marginTop="36dp"
+      android:ems="10"
+      android:inputType="textEmailAddress"
+      android:visibility="invisible"
+      app:layout_constraintStart_toEndOf="@+id/textView2"
+      app:layout_constraintTop_toBottomOf="@+id/loggedUsername" />
+
+  <EditText
+      android:id="@+id/loggedUsername"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="44dp"
+      android:layout_marginTop="204dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:visibility="invisible"
+      app:layout_constraintStart_toEndOf="@+id/textView"
+      app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
