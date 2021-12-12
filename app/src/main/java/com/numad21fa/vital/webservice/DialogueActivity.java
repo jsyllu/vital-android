@@ -23,16 +23,16 @@ public class DialogueActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         nutrientsList = extras.getStringArrayList("itemList");
         Log.i("ItemCard - nutrientsList", nutrientsList.get(0));
+        setContentView(R.layout.activity_food_nutrients_dialog);
 
         nutrientsrLayoutManger = new LinearLayoutManager(this);
         nutrientsRview = findViewById(R.id.nutrients_recycler_view);
-//        nutrientsRview.setHasFixedSize(true);
+        nutrientsRview.setHasFixedSize(true);
 
         nutrientsRviewAdapter = new NutrientsRviewAdapter(nutrientsList);
 
         nutrientsRview.setAdapter(nutrientsRviewAdapter);
         nutrientsRview.setLayoutManager(nutrientsrLayoutManger);
 
-        setContentView(R.layout.activity_food_nutrients_dialog);
     }
 }
